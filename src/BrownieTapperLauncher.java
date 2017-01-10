@@ -1,6 +1,5 @@
 import javax.swing.JFrame;
 
-
 public class BrownieTapperLauncher {
 	
 	public static void main(String[] args) {
