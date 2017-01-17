@@ -1,3 +1,5 @@
+import java.awt.event.KeyListener;
+
 import javax.swing.JFrame;
 
 public class BrownieTapperLauncher {
@@ -15,6 +17,8 @@ public class BrownieTapperLauncher {
 		BrownieTapperLauncher(){
 			frame = new JFrame();
 			panel = new GamePanel();
+			panel.addKeyListener((KeyListener) this);
+			
 			setup();
 		}
 		
