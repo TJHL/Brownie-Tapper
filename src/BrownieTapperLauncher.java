@@ -12,18 +12,19 @@ public class BrownieTapperLauncher {
 	static final int WIDTH=1000;
 	static final int HEIGHT=1000;
 	
-	BrownieTapperLauncher(){
-		frame = new JFrame();
-		panel = new GamePanel();
-		setup();
-	}
-		void setup(){
-		frame.add(panel);
-		frame.setSize(WIDTH, HEIGHT);
-		frame.setVisible(true);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		panel.startGame();
+		BrownieTapperLauncher(){
+			frame = new JFrame();
+			panel = new GamePanel();
+			setup();
 		}
+		
+			void setup(){
+				frame.add(panel);
+				frame.setSize(WIDTH, HEIGHT);
+				frame.setVisible(true);
+				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				panel.startGame();
+				}
 	
 		
 }
