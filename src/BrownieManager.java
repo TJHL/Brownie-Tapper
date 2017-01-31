@@ -5,17 +5,31 @@ public class BrownieManager {
 	int BrownieNum=0;
 	
 	void update(){
-		
+		brownieProduce();
 	}
-		void BrownieClick(JLabel label){
+		void brownieClick(JLabel label){
 			BrownieNum=BrownieNum+(1*ClickMultiplier);
 			System.out.println(BrownieNum);
-			label.setText(""+BrownieNum);
+			label.setText(""+BrownieNum+" Brownies");
 			
 		}
 	
-			void BrownieProduce(){
-		
+			void brownieProduce(){
+				BrownieNum=BrownieNum+10;
+				//label.setText(""+BrownieNum);
+			}
+			void Purchace(){
+				
+			}
+			void setCounter(JLabel label){
+				if(BrownieNum>= 2 && BrownieNum==0 ){
+					
+					label.setText(""+BrownieNum+" Brownies");
+				}
+				else{
+					label.setText(""+BrownieNum+" Brownie");
+				}
+				
 			}
 		
 }

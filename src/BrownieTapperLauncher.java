@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -27,6 +28,7 @@ public class BrownieTapperLauncher implements MouseListener {
 	 		panel.addMouseListener(this);
 	 		
 	 		manager= new BrownieManager();
+	 		label.setForeground(Color.WHITE);
 			
 			
 			setup();
@@ -39,21 +41,26 @@ public class BrownieTapperLauncher implements MouseListener {
 				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				panel.startGame();
 				}
-
-		
-			public void mouseClicked(MouseEvent e) {
-				if(e.getX()>125&& e.getX()<375 && e.getY()>125&& e.getY()<375){
-					manager.BrownieClick(label);
-				}
-					
-				
-				
-				
+			
+			void update(){
+				manager.setCounter(label);
 			}
 
+		
+			public void mouseReleased(MouseEvent e) {
+				
+				if(e.getX()>125&& e.getX()<375 && e.getY()>125&& e.getY()<375){
+					manager.brownieClick(label);
+				}
+				if(e.getX()>(BrownieTapperLauncher.WIDTH/3)*2&& e.getX()<375 && e.getY()>125&& e.getY()<375){
+					
+				}
+				
+					
+			}
 			
+			public void mouseClicked(MouseEvent e) {}
 			public void mousePressed(MouseEvent e) {}
-			public void mouseReleased(MouseEvent e) {}
 			public void mouseEntered(MouseEvent e) {}
 			public void mouseExited(MouseEvent e) {}
 	

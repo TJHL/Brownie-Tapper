@@ -9,11 +9,15 @@ import javax.swing.Timer;
 public class GamePanel extends JPanel implements ActionListener {
 	Timer clock;
 	BrownieScreen BrwSrn;
+	BrownieManager manager;
+
 
 	GamePanel(){
 	
 		clock = new Timer(1000 / 60,(ActionListener) this);
 		BrwSrn = new BrownieScreen();
+		manager = new BrownieManager();
+		
 		
 	}
 
@@ -30,6 +34,8 @@ public class GamePanel extends JPanel implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 		repaint();
+		manager.update();
+		
 
 	}
 	
