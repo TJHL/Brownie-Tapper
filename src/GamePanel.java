@@ -1,4 +1,3 @@
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -27,7 +26,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
 		frame.add(panel);
 		add(counter);
 		addMouseListener(this);
-		
+			
 		
 	}
 
