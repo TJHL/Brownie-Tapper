@@ -55,8 +55,8 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
 			if(e.getX()>125&& e.getX()<375 && e.getY()>125&& e.getY()<375){
 				manager.brownieClick();
 			}
-			if(e.getX()>(BrownieTapperLauncher.WIDTH/3)*2&& e.getX()<375 && e.getY()>125&& e.getY()<375){
-			
+			if(e.getX()>((BrownieTapperLauncher.WIDTH/3)*2)+20 && e.getX()<BrownieTapperLauncher.WIDTH-20 && e.getY()>220&& e.getY()<300){
+			manager.Purchace();
 			}
 		}	
 	}
