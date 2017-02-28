@@ -23,7 +23,7 @@ public class BrownieManager {
 	int ProducePrice6;
 	int ProducePrice7;
 	
-	int ProducerAmount1;
+	static int ProducerAmount1;
 	int ProducerAmount2;
 	int ProducerAmount3;
 	int ProducerAmount4;
@@ -48,7 +48,7 @@ public class BrownieManager {
 	int ProduceOutput7;
 
 	void update(JLabel counter) {
-		brownieProduce();
+		
 		setCounter(counter);
 		produce1();
 	}
@@ -60,8 +60,7 @@ public class BrownieManager {
 	}
 
 	void brownieProduce() {
-		BrownieNum = BrownieNum + ProduceOutput1 + ProduceOutput2 + ProduceOutput3 + ProduceOutput4 + ProduceOutput5
-				+ ProduceOutput6 + ProduceOutput7 ;
+		BrownieNum = BrownieNum + ProduceOutput2 + ProduceOutput3 + ProduceOutput4 + ProduceOutput5 + ProduceOutput6 + ProduceOutput7 ;
 	}
 
 	void Purchace() {
@@ -73,11 +72,16 @@ public class BrownieManager {
 		}
 
 	void produce1() {
-		System.out.println(ProduceRate1);
-		ProduceRate1=ProduceRate1+1;
-		if(ProduceRate1>=600){
-		ProduceRate1=0;
-		ProduceOutput1 = ((Produce1 * ProduceMultiplyer1)*ProducerAmount1);
+		if(ProducerAmount1 >= 1){
+			
+			ProduceRate1=ProduceRate1+1;
+		
+			if(ProduceRate1>=600){
+		
+				ProduceRate1=0;
+				ProduceOutput1 = ((Produce1 * ProduceMultiplyer1)*ProducerAmount1);
+				BrownieNum = BrownieNum + ProduceOutput1;
+			}
 		}
 	}
 

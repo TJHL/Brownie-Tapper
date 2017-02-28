@@ -1,8 +1,10 @@
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 
 public class BrownieScreen {
 	
+	Font Shop= new Font("Arial", Font.PLAIN,24);
 	
 	void draw(Graphics g){
 		
@@ -30,6 +32,14 @@ public class BrownieScreen {
 		g.fillRect((BrownieTapperLauncher.WIDTH/3)*2, 700, BrownieTapperLauncher.WIDTH/3+1, 20);
 		g.fillRect((BrownieTapperLauncher.WIDTH/3)*2, 800, BrownieTapperLauncher.WIDTH/3+1, 20);
 		g.fillRect((BrownieTapperLauncher.WIDTH/3)*2, 900, BrownieTapperLauncher.WIDTH/3+1, 60);
+		
+		g.setFont(Shop);
+		g.setColor(Color.BLACK);
+		g.drawString("Desert Shop", ((BrownieTapperLauncher.WIDTH/3)*2) +25 , 270);
+	
+		g.drawString(Integer.toString(BrownieManager.ProducerAmount1), ((BrownieTapperLauncher.WIDTH/3)*2) +225 , 270);
+		
+		
 		
 	}
 		
