@@ -1,9 +1,15 @@
+import java.util.ArrayList;
+import java.util.Iterator;
+
 import javax.swing.JLabel;
 
 public class BrownieManager {
 	int ClickMultiplier = 1;
 	long BrownieNum = 0;
 	double CounterDisplay = 0;
+	
+	//ArrayList<long> brownieProduction = new ArrayList<long>();
+	//Iterator<long> brownieProductionIteratior;
 	
 	int Produce1=1;
 	int Produce2;

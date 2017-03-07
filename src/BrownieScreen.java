@@ -39,6 +39,8 @@ public class BrownieScreen {
 	
 		g.drawString(Integer.toString(BrownieManager.ProducerAmount1), ((BrownieTapperLauncher.WIDTH/3)*2) +225 , 270);
 		
+		//Desert Shop
+		
 		
 		
 	}
