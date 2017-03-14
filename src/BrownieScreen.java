@@ -5,6 +5,7 @@ import java.awt.Graphics;
 public class BrownieScreen {
 	
 	Font Shop= new Font("Arial", Font.PLAIN,24);
+	BrownieStore store;
 	
 	void draw(Graphics g){
 		
@@ -35,9 +36,9 @@ public class BrownieScreen {
 		
 		g.setFont(Shop);
 		g.setColor(Color.BLACK);
-		g.drawString("Desert Shop", ((BrownieTapperLauncher.WIDTH/3)*2) +25 , 270);
+		g.drawString(store.name, ((BrownieTapperLauncher.WIDTH/3)*2) +25 , 270);
 	
-		g.drawString(Integer.toString(BrownieManager.ProducerAmount1), ((BrownieTapperLauncher.WIDTH/3)*2) +225 , 270);
+		g.drawString(Integer.toString(store.producerAmount), ((BrownieTapperLauncher.WIDTH/3)*2) +225 , 270);
 		
 		//Desert Shop
 		

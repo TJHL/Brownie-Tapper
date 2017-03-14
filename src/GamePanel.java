@@ -14,19 +14,19 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
 	JFrame frame= new JFrame();
 	JPanel panel= new JPanel();
 	JLabel counter = new JLabel("0 Brownies");
-	BrownieScreen BrwSrn;
+	BrownieScreen brwSrn;
 	BrownieManager manager;
 
 
 	GamePanel(){
 	
 		clock = new Timer(1000 / 60,(ActionListener) this);
-		BrwSrn = new BrownieScreen();
+		brwSrn = new BrownieScreen();
 		manager = new BrownieManager();
 		frame.add(panel);
 		add(counter);
 		addMouseListener(this);
-			
+		brwSrn.store=manager.store;
 		
 	}
 
@@ -36,7 +36,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
 	}
 
 	public void paintComponent(Graphics g) {
-		BrwSrn.draw(g);
+		brwSrn.draw(g);
 		
 		
 	}
@@ -56,7 +56,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
 				manager.brownieClick();
 			}
 			if(e.getX()>((BrownieTapperLauncher.WIDTH/3)*2)+20 && e.getX()<BrownieTapperLauncher.WIDTH-20 && e.getY()>220&& e.getY()<300){
-			manager.Purchace();
+			manager.storePurchace();
 			}
 		}	
 	}

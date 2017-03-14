@@ -8,50 +8,10 @@ public class BrownieManager {
 	long BrownieNum = 0;
 	double CounterDisplay = 0;
 	
-	//ArrayList<long> brownieProduction = new ArrayList<long>();
-	//Iterator<long> brownieProductionIteratior;
+	//ArrayList<BrownieStore> brownieProduction = new ArrayList<BrownieStore>();
+	//Iterator<BrownieStore> brownieProductionIteratior;
 	
-	int Produce1=1;
-	int Produce2;
-	int Produce3;
-	int Produce4;
-	int Produce5;
-	int Produce6;
-	int Produce7;
-	
-	int ProduceRate1;
-	
-	int ProducePrice1;
-	int ProducePrice2;
-	int ProducePrice3;
-	int ProducePrice4;
-	int ProducePrice5;
-	int ProducePrice6;
-	int ProducePrice7;
-	
-	static int ProducerAmount1;
-	int ProducerAmount2;
-	int ProducerAmount3;
-	int ProducerAmount4;
-	int ProducerAmount5;
-	int ProducerAmount6;
-	int ProducerAmount7;
-
-	int ProduceMultiplyer1 = 1;
-	int ProduceMultiplyer2 = 1;
-	int ProduceMultiplyer3 = 1;
-	int ProduceMultiplyer4 = 1;
-	int ProduceMultiplyer5 = 1;
-	int ProduceMultiplyer6 = 1;
-	int ProduceMultiplyer7 = 1;
-
-	int ProduceOutput1;
-	int ProduceOutput2;
-	int ProduceOutput3;
-	int ProduceOutput4;
-	int ProduceOutput5;
-	int ProduceOutput6;
-	int ProduceOutput7;
+	BrownieStore store= new BrownieStore("String",0,1,10);
 
 	void update(JLabel counter) {
 		
@@ -65,31 +25,30 @@ public class BrownieManager {
 
 	}
 
-	void brownieProduce() {
-		BrownieNum = BrownieNum + ProduceOutput2 + ProduceOutput3 + ProduceOutput4 + ProduceOutput5 + ProduceOutput6 + ProduceOutput7 ;
-	}
+	
 
-	void Purchace() {
+	void storePurchace() {
 		if(BrownieNum>=10){
-		ProducerAmount1=ProducerAmount1+1;
-		BrownieNum=BrownieNum -10;
+		store.producerAmount=store.producerAmount+1;
+		BrownieNum=BrownieNum -store.producePrice;
 		
 	}
 		}
 
 	void produce1() {
-		if(ProducerAmount1 >= 1){
+		if(store.producerAmount >= 1){
 			
-			ProduceRate1=ProduceRate1+1;
+			store.produceRate=store.produceRate+1;
 		
-			if(ProduceRate1>=600){
+			if(store.produceRate>=600){
 		
-				ProduceRate1=0;
-				ProduceOutput1 = ((Produce1 * ProduceMultiplyer1)*ProducerAmount1);
-				BrownieNum = BrownieNum + ProduceOutput1;
+				store.produceRate=0;
+				store.produceOutput = ((store.produce * store.produceMultiplyer)*store.producerAmount);
+				BrownieNum = BrownieNum + store.produceOutput;
 			}
 		}
 	}
+	
 
 	void setCounter(JLabel counter) {
 
