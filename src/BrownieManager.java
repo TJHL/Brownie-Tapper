@@ -7,16 +7,24 @@ public class BrownieManager {
 	int ClickMultiplier = 1;
 	long BrownieNum = 0;
 	double CounterDisplay = 0;
+	BrownieStore store;
 	
-	//ArrayList<BrownieStore> brownieProduction = new ArrayList<BrownieStore>();
-	//Iterator<BrownieStore> brownieProductionIteratior;
+	ArrayList<BrownieStore> brownieProduction = new ArrayList<BrownieStore>();
 	
-	BrownieStore store= new BrownieStore("String",0,1,10);
+	BrownieManager(){
+		store= new BrownieStore("Desert Shop",0,1,10);
+		brownieProduction.add(store);
+		
+	}
+	ArrayList<BrownieStore> getStores(){
+	return brownieProduction;	
+	}
 
 	void update(JLabel counter) {
 		
 		setCounter(counter);
 		produce1();
+		storePurchace();
 	}
 
 	void brownieClick() {

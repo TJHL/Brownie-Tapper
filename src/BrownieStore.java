@@ -8,7 +8,7 @@ public class BrownieStore {
 	int producerAmount=0;
 	int produceMultiplyer=1;
 	int produceOutput=0;
-	double zzzz=.1;
+
 	
 	BrownieStore(String name, int produceRate,int produce,int producePrice){
 	this.name= name;

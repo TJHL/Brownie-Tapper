@@ -3,7 +3,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-
+import java.util.ArrayList;
+import java.util.Iterator;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -16,16 +17,23 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
 	JLabel counter = new JLabel("0 Brownies");
 	BrownieScreen brwSrn;
 	BrownieManager manager;
-
-
+	ArrayList<BrownieStore> stores;
+	Iterator<BrownieStore> brownieProductionIterator;
+	
 	GamePanel(){
 	
 		clock = new Timer(1000 / 60,(ActionListener) this);
 		brwSrn = new BrownieScreen();
 		manager = new BrownieManager();
+		stores=manager.getStores();
+		brownieProductionIterator=stores.iterator();
+		while(brownieProductionIterator.hasNext()){
+			panel.add(new JLabel(brownieProductionIterator.next().name));
+		}
 		frame.add(panel);
 		add(counter);
 		addMouseListener(this);
+		//frame.setVisible(true);
 		brwSrn.store=manager.store;
 		
 	}
