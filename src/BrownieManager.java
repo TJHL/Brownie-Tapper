@@ -8,11 +8,13 @@ public class BrownieManager {
 	long BrownieNum = 0;
 	double CounterDisplay = 0;
 	BrownieStore store;
+	BrownieStore store2;
 	
 	ArrayList<BrownieStore> brownieProduction = new ArrayList<BrownieStore>();
 	
 	BrownieManager(){
 		store= new BrownieStore("Desert Shop",0,1,10);
+		store2 = new BrownieStore("Hi",0,20,20);
 		brownieProduction.add(store);
 		
 	}
@@ -25,6 +27,14 @@ public class BrownieManager {
 		setCounter(counter);
 		produce1();
 		storePurchace();
+	}
+	
+	void devAutoPurchase(){
+		
+	}
+	
+	void devAddBrownies(){
+		
 	}
 
 	void brownieClick() {

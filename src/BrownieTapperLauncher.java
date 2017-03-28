@@ -4,8 +4,8 @@ public class BrownieTapperLauncher {
 	
 	static final int WIDTH=1000;
 	static final int HEIGHT=1000;
-	JFrame frame;
-	GamePanel panel;
+	static JFrame frame;
+	static GamePanel panel;
 
 	public static void main(String[] args) {
 		
@@ -15,15 +15,15 @@ public class BrownieTapperLauncher {
 		BrownieTapperLauncher(){
 			
 			frame = new JFrame();
-			panel = new GamePanel();
 			setup();
+			panel = new GamePanel();
+			
 		}
 		
 			void setup(){
-				frame.add(panel);
 				frame.setSize(WIDTH, HEIGHT);
 				frame.setVisible(true);
 				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				panel.startGame();
+
 				}
 }
