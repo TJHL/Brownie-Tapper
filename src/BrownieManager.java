@@ -9,13 +9,29 @@ public class BrownieManager {
 	double CounterDisplay = 0;
 	BrownieStore store;
 	BrownieStore store2;
+	BrownieStore store3;
+	BrownieStore store4;
+	BrownieStore store5;
+	BrownieStore store6;
+	BrownieStore store7;
 	
 	ArrayList<BrownieStore> brownieProduction = new ArrayList<BrownieStore>();
 	
 	BrownieManager(){
-		store= new BrownieStore("Desert Shop",0,1,10);
-		store2 = new BrownieStore("Hi",0,20,20);
+		store= new BrownieStore("Baking Club",0,1,10);
+		store2 = new BrownieStore("Desert Shop",0,1,100);
+		store3 = new BrownieStore("Store 3",0,15,1000);
+		store4 = new BrownieStore("Store 4",0,50,10000);
+		store5 = new BrownieStore("Store 5",0,200,1000000);
+		store6 = new BrownieStore("Store 6",0,5000,1000000000);
+		store7 = new BrownieStore("Store 7",0,900000,0);
 		brownieProduction.add(store);
+		brownieProduction.add(store2);
+		brownieProduction.add(store3);
+		brownieProduction.add(store4);
+		brownieProduction.add(store5);
+		brownieProduction.add(store6);
+		brownieProduction.add(store7);
 		
 	}
 	ArrayList<BrownieStore> getStores(){
@@ -50,8 +66,8 @@ public class BrownieManager {
 		store.producerAmount=store.producerAmount+1;
 		BrownieNum=BrownieNum -store.producePrice;
 		
-	}
 		}
+	}
 
 	void produce1() {
 		if(store.producerAmount >= 1){
@@ -66,7 +82,6 @@ public class BrownieManager {
 			}
 		}
 	}
-	
 
 	void setCounter(JLabel counter) {
 
@@ -92,9 +107,6 @@ public class BrownieManager {
 			CounterDisplay = BrownieNum;
 			CounterDisplay = CounterDisplay / 1000000;
 			counter.setText("" + CounterDisplay + " Million Brownies");
-
 		}
-
 	}
-
 }

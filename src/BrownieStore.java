@@ -2,8 +2,8 @@ import javax.swing.JFrame;
 
 public class BrownieStore {
 	String name;
-	int produce;
-	int produceRate;
+	int produce; 			//per turn
+	int produceRate;		//how often till turn
 	int producePrice;
 	int producerAmount=0;
 	int produceMultiplyer=1;
@@ -18,6 +18,4 @@ public class BrownieStore {
 	
 		
 	}
-	
-
 }

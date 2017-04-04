@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,20 +8,20 @@ import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.Iterator;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
 public class GamePanel extends JPanel implements ActionListener, MouseListener {
 	Timer clock;
-	//JFrame frame= new JFrame();
-	//JPanel panel= new JPanel();
 	JLabel counter = new JLabel("0 Brownies");
 	BrownieScreen brwSrn;
 	BrownieManager manager;
 	ArrayList<BrownieStore> stores;
 	Iterator<BrownieStore> brownieProductionIterator;
+	int buttonX=(BrownieTapperLauncher.WIDTH/3)*2+20;
+	int buttonY=220;
+	Font shop= new Font("Arial", Font.PLAIN,24);
 	
 	GamePanel(){
 	
@@ -30,7 +31,8 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
 		stores=manager.getStores();
 		brownieProductionIterator=stores.iterator();
 		while(brownieProductionIterator.hasNext()){
-			addStoreButton();
+			addStoreButton(buttonX, buttonY);
+			buttonY+=100;
 		}
 		setLayout(null);
 		BrownieTapperLauncher.frame.add(this);
@@ -46,13 +48,15 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
 		clock.start();
 
 	}
-	void addStoreButton(){
+	void addStoreButton(int buttonX, int buttonY){
 		JButton button= new JButton();
+		button.setFont(shop);
+		
 		button.setText(brownieProductionIterator.next().name);		
 		button.setBorderPainted(false);
 		button.setOpaque(true);
 		button.setBackground(Color.GRAY);
-		button.setBounds((BrownieTapperLauncher.WIDTH/3)*2+20, 220, BrownieTapperLauncher.WIDTH/3+1, 20);
+		button.setBounds(buttonX, buttonY, (BrownieTapperLauncher.WIDTH/3+1)-40, 80);
 		this.add(button);
 		
 	}
@@ -79,10 +83,6 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
 			}
 		}	
 	}
-	public void mouseClicked(MouseEvent e) {}
-	public void mousePressed(MouseEvent e) {}
-	public void mouseEntered(MouseEvent e) {}
-	public void mouseExited(MouseEvent e) {}
-	
-	
+	public void mouseClicked(MouseEvent e) {}public void mousePressed(MouseEvent e) {}public void mouseEntered(MouseEvent e) {}public void
+	mouseExited(MouseEvent e) {}
 }
