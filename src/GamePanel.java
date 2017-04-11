@@ -48,16 +48,21 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
 		clock.start();
 
 	}
+
 	void addStoreButton(int buttonX, int buttonY){
+		String storeName=brownieProductionIterator.next().name;
 		JButton button= new JButton();
 		button.setFont(shop);
 		
-		button.setText(brownieProductionIterator.next().name);		
+		button.addMouseListener(this);
+		button.setText(storeName);	
+		button.setName(storeName);
 		button.setBorderPainted(false);
 		button.setOpaque(true);
 		button.setBackground(Color.GRAY);
 		button.setBounds(buttonX, buttonY, (BrownieTapperLauncher.WIDTH/3+1)-40, 80);
 		this.add(button);
+		
 		
 	}
 	public void paintComponent(Graphics g) {
@@ -68,19 +73,12 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
 		repaint();
 		manager.update(counter);
 		
-
 	}
-
-	
 	
 	public void mouseReleased(MouseEvent e) {
 		if(e.getButton()==MouseEvent.BUTTON1){
-			if(e.getX()>125&& e.getX()<375 && e.getY()>125&& e.getY()<375){
-				manager.brownieClick();
-			}
-			if(e.getX()>((BrownieTapperLauncher.WIDTH/3)*2)+20 && e.getX()<BrownieTapperLauncher.WIDTH-20 && e.getY()>220&& e.getY()<300){
-			manager.storePurchace();
-			}
+		manager.storePurchace(e.getComponent().getName());
+		
 		}	
 	}
 	public void mouseClicked(MouseEvent e) {}public void mousePressed(MouseEvent e) {}public void mouseEntered(MouseEvent e) {}public void

@@ -24,12 +24,7 @@ public class BrownieScreen {
 		g.setColor(new Color(125, 89, 54));
 		g.fillRect(125, 125, 250, 250);
 
-		
-		g.setFont(Shop);
-		g.setColor(Color.BLACK);
-		g.drawString(store.name, ((BrownieTapperLauncher.WIDTH/3)*2) +25 , 270);
-	
-		g.drawString(Integer.toString(store.producerAmount), ((BrownieTapperLauncher.WIDTH/3)*2) +225 , 270);	
+
 	}
 		
 		void update(){

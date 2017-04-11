@@ -18,4 +18,7 @@ public class BrownieStore {
 	
 		
 	}
+	public int purchase(){
+		return producePrice;
+	}
 }

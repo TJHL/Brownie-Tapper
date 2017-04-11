@@ -24,7 +24,7 @@ public class BrownieManager {
 		store4 = new BrownieStore("Store 4",0,50,10000);
 		store5 = new BrownieStore("Store 5",0,200,1000000);
 		store6 = new BrownieStore("Store 6",0,5000,1000000000);
-		store7 = new BrownieStore("Store 7",0,900000,0);
+		store7 = new BrownieStore("Store 7",0,900000,225000000);
 		brownieProduction.add(store);
 		brownieProduction.add(store2);
 		brownieProduction.add(store3);
@@ -42,7 +42,11 @@ public class BrownieManager {
 		
 		setCounter(counter);
 		produce1();
-		storePurchace();
+		
+		BrownieNum=BrownieNum+1;
+		System.out.println(BrownieNum);
+		
+
 	}
 	
 	void devAutoPurchase(){
@@ -61,12 +65,17 @@ public class BrownieManager {
 
 	
 
-	void storePurchace() {
-		if(BrownieNum>=10){
-		store.producerAmount=store.producerAmount+1;
-		BrownieNum=BrownieNum -store.producePrice;
-		
+	public int storePurchace(String storeName) {
+		for (int i = 0; i < brownieProduction.size()-1; i++) {
+			if(brownieProduction.get(i).name.equals(storeName)){
+				return brownieProduction.get(i).purchase();
+			}	
 		}
+		
+			return 0;	/*
+							BrownieNum=BrownieNum -namedStore.producePrice;
+							namedStore.ProducerAmount= namedStore.ProducerAmount+1;
+			 			*/	
 	}
 
 	void produce1() {
