@@ -1,11 +1,10 @@
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import javax.swing.JLabel;
 
 public class BrownieManager {
 	int ClickMultiplier = 1;
-	long BrownieNum = 0;
+	long brownieNum = 0;
 	double CounterDisplay = 0;
 	BrownieStore store;
 	BrownieStore store2;
@@ -14,17 +13,17 @@ public class BrownieManager {
 	BrownieStore store5;
 	BrownieStore store6;
 	BrownieStore store7;
-	
+
 	ArrayList<BrownieStore> brownieProduction = new ArrayList<BrownieStore>();
-	
-	BrownieManager(){
-		store= new BrownieStore("Baking Club",0,1,10);
-		store2 = new BrownieStore("Desert Shop",0,1,100);
-		store3 = new BrownieStore("Store 3",0,15,1000);
-		store4 = new BrownieStore("Store 4",0,50,10000);
-		store5 = new BrownieStore("Store 5",0,200,1000000);
-		store6 = new BrownieStore("Store 6",0,5000,1000000000);
-		store7 = new BrownieStore("Store 7",0,900000,225000000);
+
+	BrownieManager() {
+		store = new BrownieStore("Baking Club", 0, 1, 10);
+		store2 = new BrownieStore("Desert Shop", 0, 1, 100);
+		store3 = new BrownieStore("Store 3", 0, 15, 1000);
+		store4 = new BrownieStore("Store 4", 0, 50, 10000);
+		store5 = new BrownieStore("Store 5", 0, 200, 1000000);
+		store6 = new BrownieStore("Store 6", 0, 5000, 1000000000);
+		store7 = new BrownieStore("Store 7", 0, 900000, 225000000);
 		brownieProduction.add(store);
 		brownieProduction.add(store2);
 		brownieProduction.add(store3);
@@ -32,88 +31,83 @@ public class BrownieManager {
 		brownieProduction.add(store5);
 		brownieProduction.add(store6);
 		brownieProduction.add(store7);
-		
+
 	}
-	ArrayList<BrownieStore> getStores(){
-	return brownieProduction;	
+
+	ArrayList<BrownieStore> getStores() {
+		return brownieProduction;
 	}
 
 	void update(JLabel counter) {
-		
+
 		setCounter(counter);
 		produce1();
-		
-		BrownieNum=BrownieNum+1;
-		System.out.println(BrownieNum);
-		
+
+		brownieNum = brownieNum + 1;
 
 	}
-	
-	void devAutoPurchase(){
-		
+
+	void devAutoPurchase() {
 	}
-	
-	void devAddBrownies(){
-		
+
+	void devAddBrownies() {
 	}
 
 	void brownieClick() {
 
-		BrownieNum = BrownieNum + (1 * ClickMultiplier);
+		brownieNum = brownieNum + (1 * ClickMultiplier);
 
 	}
 
-	
-
 	public int storePurchace(String storeName) {
-		for (int i = 0; i < brownieProduction.size()-1; i++) {
-			if(brownieProduction.get(i).name.equals(storeName)){
+		for (int i = 0; i < brownieProduction.size() - 1; i++) {
+			if (brownieProduction.get(i).name.equals(storeName)) {
 				return brownieProduction.get(i).purchase();
-			}	
+			}
 		}
-		
-			return 0;	/*
-							BrownieNum=BrownieNum -namedStore.producePrice;
-							namedStore.ProducerAmount= namedStore.ProducerAmount+1;
-			 			*/	
+
+		return 0; /*
+					 * brownieNum=brownieNum -namedStore.producePrice; namedStore.ProducerAmount=
+					 * namedStore.ProducerAmount+1;
+					 */
 	}
 
 	void produce1() {
-		if(store.producerAmount >= 1){
-			
-			store.produceRate=store.produceRate+1;
-		
-			if(store.produceRate>=600){
-		
-				store.produceRate=0;
-				store.produceOutput = ((store.produce * store.produceMultiplyer)*store.producerAmount);
-				BrownieNum = BrownieNum + store.produceOutput;
+		if (store.producerAmount >= 1) {
+
+			store.produceRate = store.produceRate + 1;
+
+			if (store.produceRate >= 600) {
+
+				store.produceRate = 0;
+				store.produceOutput = ((store.produce * store.produceMultiplyer) * store.producerAmount);
+				brownieNum = brownieNum + store.produceOutput;
 			}
 		}
 	}
 
 	void setCounter(JLabel counter) {
 
-		if (BrownieNum <= 999) {
-			if (BrownieNum >= 2 || BrownieNum == 0) {
+		if (brownieNum <= 999) {
+			if (brownieNum >= 2 || brownieNum == 0) {
 
-				counter.setText("" + BrownieNum + " Brownies");
+				counter.setText("" + brownieNum + " Brownies");
 
 			}
-			if (BrownieNum == 1) {
-				counter.setText("" + BrownieNum + " Brownie");
+			if (brownieNum == 1) {
+				counter.setText("" + brownieNum + " Brownie");
 			}
 		}
 
-		if (BrownieNum >= 1000 && BrownieNum <= 999999) {
-			CounterDisplay = BrownieNum;
+		if (brownieNum >= 1000 && brownieNum <= 999999) {
+			CounterDisplay = brownieNum;
 			CounterDisplay = CounterDisplay / 1000;
 			counter.setText("" + CounterDisplay + " Thousand Brownies");
 
 		}
 
-		if (BrownieNum >= 1000000) {
-			CounterDisplay = BrownieNum;
+		if (brownieNum >= 1000000) {
+			CounterDisplay = brownieNum;
 			CounterDisplay = CounterDisplay / 1000000;
 			counter.setText("" + CounterDisplay + " Million Brownies");
 		}
