@@ -42,8 +42,7 @@ public class BrownieManager {
 
 		setCounter(counter);
 		produce1();
-
-		brownieNum = brownieNum + 1;
+		devAddBrownies();
 
 	}
 
@@ -51,6 +50,7 @@ public class BrownieManager {
 	}
 
 	void devAddBrownies() {
+		// brownieNum = brownieNum + 1;
 	}
 
 	void brownieClick() {
@@ -59,17 +59,26 @@ public class BrownieManager {
 
 	}
 
-	public int storePurchace(String storeName) {
+	public BrownieStore getStore(String storeName) {
 		for (int i = 0; i < brownieProduction.size() - 1; i++) {
 			if (brownieProduction.get(i).name.equals(storeName)) {
-				return brownieProduction.get(i).purchase();
+
+				return brownieProduction.get(i);
+
 			}
 		}
 
-		return 0; /*
-					 * brownieNum=brownieNum -namedStore.producePrice; namedStore.ProducerAmount=
-					 * namedStore.ProducerAmount+1;
-					 */
+		return null;
+	}
+
+	void storePurchace(String storeName) {
+		BrownieStore store = getStore(storeName);
+		if (store != null) {
+			if (brownieNum >= store.producePrice) {
+				store.producerAmount = store.producerAmount + 1;
+				brownieNum = brownieNum - store.producePrice;
+			}
+		}
 	}
 
 	void produce1() {

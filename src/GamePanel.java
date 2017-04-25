@@ -96,8 +96,12 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
 		if (e.getButton() == MouseEvent.BUTTON1) {
 			if (e.getSource() == brownie) {
 				manager.brownieClick();
-			} else {
+
+			}
+
+			else {
 				manager.storePurchace(e.getComponent().getName());
+
 			}
 
 		}
