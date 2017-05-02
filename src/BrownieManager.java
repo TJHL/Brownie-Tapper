@@ -41,7 +41,7 @@ public class BrownieManager {
 	void update(JLabel counter) {
 
 		setCounter(counter);
-		produce1();
+		produce();
 		devAddBrownies();
 
 	}
@@ -81,15 +81,16 @@ public class BrownieManager {
 		}
 	}
 
-	void produce1() {
+	void produce() {
 		if (store.producerAmount >= 1) {
 
 			store.produceRate = store.produceRate + 1;
 
 			if (store.produceRate >= 600) {
+				// store.produceAmount/60 ;
 
 				store.produceRate = 0;
-				store.produceOutput = ((store.produce * store.produceMultiplyer) * store.producerAmount);
+				store.produceOutput = ((store.produceAmount * store.produceMultiplyer) * store.producerAmount);
 				brownieNum = brownieNum + store.produceOutput;
 			}
 		}

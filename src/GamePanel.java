@@ -15,14 +15,17 @@ import javax.swing.Timer;
 
 public class GamePanel extends JPanel implements ActionListener, MouseListener {
 	Timer clock;
-	JLabel counter = new JLabel("0 Brownies");
+	JLabel brownieCounter = new JLabel("0 Brownies");
+	JLabel productionCounter = new JLabel("Text:Null");
 	BrownieScreen brwSrn;
 	BrownieManager manager;
 	ArrayList<BrownieStore> stores;
 	Iterator<BrownieStore> brownieProductionIterator;
 	int buttonX = (BrownieTapperLauncher.WIDTH / 3) * 2 + 20;
 	int buttonY = 220;
+	int frameSegment = BrownieTapperLauncher.WIDTH / 3;
 	Font shop = new Font("Arial", Font.PLAIN, 24);
+	Font score = new Font("Arial", Font.BOLD, 24);
 
 	JButton brownie;
 
@@ -38,8 +41,16 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
 			buttonY += 100;
 		}
 		brownieButton();
-		counter.setBounds(500, 50, 200, 50);
-		add(counter);
+		brownieCounter.setFont(score);
+		brownieCounter.setForeground(Color.WHITE);
+		brownieCounter.setBounds(frameSegment - 63, 70, 20000000, 50);
+		add(brownieCounter);
+
+		productionCounter.setFont(score);
+		productionCounter.setForeground(Color.WHITE);
+		productionCounter.setBounds(frameSegment - 63, 10, 400, 100);
+		add(productionCounter);
+
 		setLayout(null);
 		BrownieTapperLauncher.frame.add(this);
 		BrownieTapperLauncher.frame.setVisible(true);
@@ -66,7 +77,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
 		button.setBorderPainted(false);
 		button.setOpaque(true);
 		button.setBackground(Color.GRAY);
-		button.setBounds(buttonX, buttonY, (BrownieTapperLauncher.WIDTH / 3 + 1) - 40, 80);
+		button.setBounds(buttonX, buttonY, (frameSegment + 1) - 40, 80);
 		this.add(button);
 
 	}
@@ -77,7 +88,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
 		brownie.setBorderPainted(false);
 		brownie.setOpaque(true);
 		brownie.setBackground(new Color(125, 89, 54));
-		brownie.setBounds(125, 125, 250, 250);
+		brownie.setBounds(frameSegment - 125, 156, 250, 250);
 		this.add(brownie);
 
 	}
@@ -87,7 +98,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		manager.update(counter);
+		manager.update(brownieCounter);
 		repaint();
 
 	}

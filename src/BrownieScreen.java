@@ -1,10 +1,8 @@
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.Graphics;
 
 public class BrownieScreen {
 
-	Font Shop = new Font("Arial", Font.PLAIN, 24);
 	BrownieStore store;
 
 	void draw(Graphics g) {
