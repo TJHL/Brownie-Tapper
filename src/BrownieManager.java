@@ -14,6 +14,9 @@ public class BrownieManager {
 	BrownieStore store6;
 	BrownieStore store7;
 
+	float browniesPerSecond;
+	float browniesPerTick;
+
 	ArrayList<BrownieStore> brownieProduction = new ArrayList<BrownieStore>();
 
 	BrownieManager() {
@@ -86,14 +89,23 @@ public class BrownieManager {
 
 			store.produceRate = store.produceRate + 1;
 
+			System.out.println(store.producerAmount);
+
 			if (store.produceRate >= 600) {
-				// store.produceAmount/60 ;
 
 				store.produceRate = 0;
 				store.produceOutput = ((store.produceAmount * store.produceMultiplyer) * store.producerAmount);
 				brownieNum = brownieNum + store.produceOutput;
+
 			}
 		}
+	}
+
+	void produce2_0() {
+
+		// browniesPerSecond=(prodution1*numofstores1)+(prodution2*numofstores2);
+		browniesPerTick = browniesPerSecond / 60;
+
 	}
 
 	void setCounter(JLabel counter) {

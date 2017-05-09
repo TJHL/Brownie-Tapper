@@ -11,6 +11,7 @@ import java.util.Iterator;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 import javax.swing.Timer;
 
 public class GamePanel extends JPanel implements ActionListener, MouseListener {
@@ -67,9 +68,11 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
 	}
 
 	void addStoreButton(int buttonX, int buttonY) {
-		String storeName = brownieProductionIterator.next().name;
+		BrownieStore store = brownieProductionIterator.next();
+		String storeName = store.name;
 		JButton button = new JButton();
 		button.setFont(shop);
+		button.setHorizontalAlignment(SwingConstants.LEFT);
 
 		button.addMouseListener(this);
 		button.setText(storeName);
@@ -79,7 +82,10 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
 		button.setBackground(Color.GRAY);
 		button.setBounds(buttonX, buttonY, (frameSegment + 1) - 40, 80);
 		this.add(button);
-
+		/*
+		 * JLabel label = new JLabel("da;hfo;UG;I"); label.setName(storeName); label.setBounds(buttonX + 250, buttonY,
+		 * 50, 80); label.setOpaque(false); label.setVisible(true); this.add(label);
+		 */
 	}
 
 	void brownieButton() {
