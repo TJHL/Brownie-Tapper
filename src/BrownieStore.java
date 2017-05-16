@@ -1,13 +1,13 @@
 public class BrownieStore {
 	String name;
-	int produceAmount; // per turn
+	float produceAmount; // per turn
 	int produceRate; // how often till turn
 	int producePrice;
 	int producerAmount = 0;
-	int produceMultiplyer = 1;
+	double produceMultiplyer = 1;
 	int produceOutput = 0;
 
-	BrownieStore(String name, int produceRate, int produceAmount, int producePrice) {
+	BrownieStore(String name, int produceRate, float produceAmount, int producePrice) {
 		this.name = name;
 		this.produceRate = produceRate;
 		this.produceAmount = produceAmount;

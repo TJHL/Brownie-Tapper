@@ -4,7 +4,7 @@ import javax.swing.JLabel;
 
 public class BrownieManager {
 	int ClickMultiplier = 1;
-	long brownieNum = 0;
+	double brownieNum = 0;
 	double CounterDisplay = 0;
 	BrownieStore store;
 	BrownieStore store2;
@@ -20,7 +20,7 @@ public class BrownieManager {
 	ArrayList<BrownieStore> brownieProduction = new ArrayList<BrownieStore>();
 
 	BrownieManager() {
-		store = new BrownieStore("Baking Club", 0, 1, 10);
+		store = new BrownieStore("Baking Club", 0, (float) .1, 10);
 		store2 = new BrownieStore("Desert Shop", 0, 1, 100);
 		store3 = new BrownieStore("Store 3", 0, 15, 1000);
 		store4 = new BrownieStore("Store 4", 0, 50, 10000);
@@ -94,7 +94,10 @@ public class BrownieManager {
 			if (store.produceRate >= 600) {
 
 				store.produceRate = 0;
-				store.produceOutput = ((store.produceAmount * store.produceMultiplyer) * store.producerAmount);
+				store.produceOutput = ((store.produceAmount /*
+															 * * store.
+															 * produceMultiplyer
+															 */) * store.producerAmount);
 				brownieNum = brownieNum + store.produceOutput;
 
 			}
@@ -103,8 +106,10 @@ public class BrownieManager {
 
 	void produce2_0() {
 
-		// browniesPerSecond=(prodution1*numofstores1)+(prodution2*numofstores2);
+		browniesPerSecond = (prodution1 * numofstores1) + (prodution2 * numofstores2);
 		browniesPerTick = browniesPerSecond / 60;
+
+		brownieNum = (float) brownieNum + browniesPerTick;
 
 	}
 

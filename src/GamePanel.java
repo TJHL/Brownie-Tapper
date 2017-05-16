@@ -17,7 +17,7 @@ import javax.swing.Timer;
 public class GamePanel extends JPanel implements ActionListener, MouseListener {
 	Timer clock;
 	JLabel brownieCounter = new JLabel("0 Brownies");
-	JLabel productionCounter = new JLabel("Text:Null");
+	JLabel productionCounter = new JLabel("Brownies Per Second:");
 	BrownieScreen brwSrn;
 	BrownieManager manager;
 	ArrayList<BrownieStore> stores;
@@ -27,6 +27,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
 	int frameSegment = BrownieTapperLauncher.WIDTH / 3;
 	Font shop = new Font("Arial", Font.PLAIN, 24);
 	Font score = new Font("Arial", Font.BOLD, 24);
+	Font bps = new Font("Arial", Font.BOLD, 12);
 
 	JButton brownie;
 
@@ -44,12 +45,12 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
 		brownieButton();
 		brownieCounter.setFont(score);
 		brownieCounter.setForeground(Color.WHITE);
-		brownieCounter.setBounds(frameSegment - 63, 70, 20000000, 50);
+		brownieCounter.setBounds(frameSegment - 63, 10, 400, 100);
 		add(brownieCounter);
 
-		productionCounter.setFont(score);
+		productionCounter.setFont(bps);
 		productionCounter.setForeground(Color.WHITE);
-		productionCounter.setBounds(frameSegment - 63, 10, 400, 100);
+		productionCounter.setBounds(frameSegment - 63, 70, 20000000, 50);
 		add(productionCounter);
 
 		setLayout(null);
@@ -83,8 +84,9 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
 		button.setBounds(buttonX, buttonY, (frameSegment + 1) - 40, 80);
 		this.add(button);
 		/*
-		 * JLabel label = new JLabel("da;hfo;UG;I"); label.setName(storeName); label.setBounds(buttonX + 250, buttonY,
-		 * 50, 80); label.setOpaque(false); label.setVisible(true); this.add(label);
+		 * JLabel label = new JLabel("da;hfo;UG;I"); label.setName(storeName);
+		 * label.setBounds(buttonX + 250, buttonY, 50, 80);
+		 * label.setOpaque(false); label.setVisible(true); this.add(label);
 		 */
 	}
 
@@ -105,6 +107,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
 
 	public void actionPerformed(ActionEvent e) {
 		manager.update(brownieCounter);
+		manager.update(productionCounter);
 		repaint();
 
 	}
