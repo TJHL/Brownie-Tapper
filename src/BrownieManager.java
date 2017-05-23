@@ -13,6 +13,8 @@ public class BrownieManager {
 	BrownieStore store5;
 	BrownieStore store6;
 	BrownieStore store7;
+	BrownieStore store8;
+	BrownieStore store9;
 
 	float browniesPerSecond;
 	float browniesPerTick;
@@ -20,13 +22,15 @@ public class BrownieManager {
 	ArrayList<BrownieStore> brownieProduction = new ArrayList<BrownieStore>();
 
 	BrownieManager() {
-		store = new BrownieStore("Baking Club", 0, (float) .1, 10);
-		store2 = new BrownieStore("Desert Shop", 0, 1, 100);
-		store3 = new BrownieStore("Store 3", 0, 15, 1000);
-		store4 = new BrownieStore("Store 4", 0, 50, 10000);
-		store5 = new BrownieStore("Store 5", 0, 200, 1000000);
-		store6 = new BrownieStore("Store 6", 0, 5000, 1000000000);
-		store7 = new BrownieStore("Store 7", 0, 900000, 225000000);
+		store = new BrownieStore("Baking Club", (float) .1, 10);
+		store2 = new BrownieStore("Desert Shop", 1, 100);
+		store3 = new BrownieStore("Store 3", 15, 1000);
+		store4 = new BrownieStore("Store 4", 50, 10000);
+		store5 = new BrownieStore("Store 5", 200, 1000000);
+		store6 = new BrownieStore("Store 6", 5000, 1000000000);
+		store7 = new BrownieStore("Store 7", 900000, 225000000);
+		store8 = new BrownieStore("Store 8", 900000, 225000000);
+		store9 = new BrownieStore("Universal Monopoly", 0, 2);// 922337203685477580);
 		brownieProduction.add(store);
 		brownieProduction.add(store2);
 		brownieProduction.add(store3);
@@ -34,6 +38,8 @@ public class BrownieManager {
 		brownieProduction.add(store5);
 		brownieProduction.add(store6);
 		brownieProduction.add(store7);
+		brownieProduction.add(store8);
+		brownieProduction.add(store9);
 
 	}
 
@@ -44,7 +50,8 @@ public class BrownieManager {
 	void update(JLabel counter) {
 
 		setCounter(counter);
-		produce();
+
+		produce2_0();
 		devAddBrownies();
 
 	}
@@ -94,10 +101,8 @@ public class BrownieManager {
 			if (store.produceRate >= 600) {
 
 				store.produceRate = 0;
-				store.produceOutput = ((store.produceAmount /*
-															 * * store.
-															 * produceMultiplyer
-															 */) * store.producerAmount);
+				// store.produceOutput = ((store.produceAmount ) *
+				// store.producerAmount);
 				brownieNum = brownieNum + store.produceOutput;
 
 			}
@@ -106,28 +111,55 @@ public class BrownieManager {
 
 	void produce2_0() {
 
-		browniesPerSecond = (prodution1 * numofstores1) + (prodution2 * numofstores2);
+		browniesPerSecond = (store.produceAmount * store.producerAmount)
+				+ (store2.produceAmount * store2.producerAmount) + (store3.produceAmount * store3.producerAmount)
+				+ (store4.produceAmount * store4.producerAmount) + (store5.produceAmount * store5.producerAmount)
+				+ (store6.produceAmount * store6.producerAmount) + (store7.produceAmount * store7.producerAmount)
+				+ (store8.produceAmount * store8.producerAmount);
+
 		browniesPerTick = browniesPerSecond / 60;
+
+		System.out.println("Brownies Per Second " + browniesPerSecond);
+
+		// productionCounter.setText(browniesPerSecond+" Brownies Per Second");
 
 		brownieNum = (float) brownieNum + browniesPerTick;
 
 	}
 
+	private String shortString(String longString) {
+		String shortString = "";
+		int stop = longString.length();
+		for (int i = 0; i < stop; i++) {
+			if (longString.charAt(i) == '.') {
+				stop = i + 1;
+			}
+			shortString = shortString + longString.charAt(i);
+		}
+		System.out.println(longString);
+		System.out.println(shortString);
+		return shortString;
+	}
+
 	void setCounter(JLabel counter) {
+		CounterDisplay = brownieNum;
+		for (int i = 0; i < CounterDisplay; i++) {
+
+		}
 
 		if (brownieNum <= 999) {
 			if (brownieNum >= 2 || brownieNum == 0) {
 
-				counter.setText("" + brownieNum + " Brownies");
+				counter.setText("" + CounterDisplay + " Brownies");
 
 			}
 			if (brownieNum == 1) {
-				counter.setText("" + brownieNum + " Brownie");
+				counter.setText("" + CounterDisplay + " Brownie");
 			}
 		}
 
 		if (brownieNum >= 1000 && brownieNum <= 999999) {
-			CounterDisplay = brownieNum;
+
 			CounterDisplay = CounterDisplay / 1000;
 			counter.setText("" + CounterDisplay + " Thousand Brownies");
 

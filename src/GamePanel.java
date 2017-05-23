@@ -23,7 +23,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
 	ArrayList<BrownieStore> stores;
 	Iterator<BrownieStore> brownieProductionIterator;
 	int buttonX = (BrownieTapperLauncher.WIDTH / 3) * 2 + 20;
-	int buttonY = 220;
+	int buttonY = 20;
 	int frameSegment = BrownieTapperLauncher.WIDTH / 3;
 	Font shop = new Font("Arial", Font.PLAIN, 24);
 	Font score = new Font("Arial", Font.BOLD, 24);
