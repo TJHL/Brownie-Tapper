@@ -4,7 +4,7 @@ import javax.swing.JLabel;
 
 public class BrownieManager {
 	int ClickMultiplier = 1;
-	double brownieNum = 0;
+	double brownieNum = 998;
 	double CounterDisplay = 0;
 	BrownieStore store;
 	BrownieStore store2;
@@ -27,9 +27,9 @@ public class BrownieManager {
 		store3 = new BrownieStore("Store 3", 15, 1000);
 		store4 = new BrownieStore("Store 4", 50, 10000);
 		store5 = new BrownieStore("Store 5", 200, 1000000);
-		store6 = new BrownieStore("Store 6", 5000, 1000000000);
-		store7 = new BrownieStore("Store 7", 900000, 225000000);
-		store8 = new BrownieStore("Store 8", 900000, 225000000);
+		store6 = new BrownieStore("Store 6", 5000, 5000000);
+		store7 = new BrownieStore("Store 7", 10000, 25000000);
+		store8 = new BrownieStore("Store 8", 1000000, 500000000);
 		store9 = new BrownieStore("Universal Monopoly", 0, 2);// 922337203685477580);
 		brownieProduction.add(store);
 		brownieProduction.add(store2);
@@ -51,7 +51,7 @@ public class BrownieManager {
 
 		setCounter(counter);
 
-		produce2_0();
+		produce2();
 		devAddBrownies();
 
 	}
@@ -91,25 +91,7 @@ public class BrownieManager {
 		}
 	}
 
-	void produce() {
-		if (store.producerAmount >= 1) {
-
-			store.produceRate = store.produceRate + 1;
-
-			System.out.println(store.producerAmount);
-
-			if (store.produceRate >= 600) {
-
-				store.produceRate = 0;
-				// store.produceOutput = ((store.produceAmount ) *
-				// store.producerAmount);
-				brownieNum = brownieNum + store.produceOutput;
-
-			}
-		}
-	}
-
-	void produce2_0() {
+	void produce2() {
 
 		browniesPerSecond = (store.produceAmount * store.producerAmount)
 				+ (store2.produceAmount * store2.producerAmount) + (store3.produceAmount * store3.producerAmount)
@@ -119,22 +101,25 @@ public class BrownieManager {
 
 		browniesPerTick = browniesPerSecond / 60;
 
-		System.out.println("Brownies Per Second " + browniesPerSecond);
-
-		// productionCounter.setText(browniesPerSecond+" Brownies Per Second");
-
 		brownieNum = (float) brownieNum + browniesPerTick;
 
 	}
 
-	private String shortString(String longString) {
+	void setProducingCounter(JLabel label) {
+		// String hi = shortString(Double.toString(browniesPerSecond), 2);
+		label.setText("Brownies Per Second " + browniesPerSecond);
+	}
+
+	private String shortString(String longString, int deciPlace) {
 		String shortString = "";
 		int stop = longString.length();
 		for (int i = 0; i < stop; i++) {
-			if (longString.charAt(i) == '.') {
-				stop = i + 1;
-			}
 			shortString = shortString + longString.charAt(i);
+			if (longString.charAt(i + 1) == '.') {
+
+				stop = i + 1 + deciPlace;
+			}
+
 		}
 		System.out.println(longString);
 		System.out.println(shortString);
@@ -143,29 +128,29 @@ public class BrownieManager {
 
 	void setCounter(JLabel counter) {
 		CounterDisplay = brownieNum;
-		for (int i = 0; i < CounterDisplay; i++) {
 
-		}
+		String hi = shortString(Double.toString(CounterDisplay), 0);
 
 		if (brownieNum <= 999) {
 			if (brownieNum >= 2 || brownieNum == 0) {
 
-				counter.setText("" + CounterDisplay + " Brownies");
+				counter.setText("" + hi + " Brownies");
 
-			}
-			if (brownieNum == 1) {
-				counter.setText("" + CounterDisplay + " Brownie");
+			} else if (brownieNum == 1) {
+
+				counter.setText("" + hi + " Brownie");
 			}
 		}
 
-		if (brownieNum >= 1000 && brownieNum <= 999999) {
+		else if (brownieNum >= 1000 && brownieNum <= 999999) {
 
 			CounterDisplay = CounterDisplay / 1000;
+			// hi = shortString(Double.toString(CounterDisplay), 4);
 			counter.setText("" + CounterDisplay + " Thousand Brownies");
 
 		}
 
-		if (brownieNum >= 1000000) {
+		else if (brownieNum >= 1000000) {
 			CounterDisplay = brownieNum;
 			CounterDisplay = CounterDisplay / 1000000;
 			counter.setText("" + CounterDisplay + " Million Brownies");

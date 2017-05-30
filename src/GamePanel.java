@@ -76,7 +76,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
 		button.setHorizontalAlignment(SwingConstants.LEFT);
 
 		button.addMouseListener(this);
-		button.setText(storeName);
+		button.setText(storeName + " $" + store.producePrice);
 		button.setName(storeName);
 		button.setBorderPainted(false);
 		button.setOpaque(true);
@@ -107,7 +107,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
 
 	public void actionPerformed(ActionEvent e) {
 		manager.update(brownieCounter);
-		manager.update(productionCounter);
+		manager.setProducingCounter(productionCounter);
 		repaint();
 
 	}
