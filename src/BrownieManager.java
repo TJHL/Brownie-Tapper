@@ -113,14 +113,16 @@ public class BrownieManager {
 	private String shortString(String longString, int deciPlace) {
 		String shortString = "";
 		int stop = longString.length();
+		int point=longString.indexOf('.');
 		for (int i = 0; i < stop; i++) {
+			if (point>=0 &&	i>point+deciPlace) {
+				break;
+			}
 			shortString = shortString + longString.charAt(i);
-			if (longString.charAt(i + 1) == '.') {
-
-				stop = i + 1 + deciPlace;
 			}
 
-		}
+
+		
 		System.out.println(longString);
 		System.out.println(shortString);
 		return shortString;
@@ -128,32 +130,34 @@ public class BrownieManager {
 
 	void setCounter(JLabel counter) {
 		CounterDisplay = brownieNum;
-
+		String counterMessage="";
 		String hi = shortString(Double.toString(CounterDisplay), 0);
 
 		if (brownieNum <= 999) {
 			if (brownieNum >= 2 || brownieNum == 0) {
 
-				counter.setText("" + hi + " Brownies");
+				counterMessage=counterMessage +hi + " Brownies";
 
 			} else if (brownieNum == 1) {
 
-				counter.setText("" + hi + " Brownie");
+				counterMessage=counterMessage +hi + " Brownie";
 			}
 		}
 
 		else if (brownieNum >= 1000 && brownieNum <= 999999) {
 
 			CounterDisplay = CounterDisplay / 1000;
-			// hi = shortString(Double.toString(CounterDisplay), 4);
-			counter.setText("" + CounterDisplay + " Thousand Brownies");
+			hi = shortString(Double.toString(CounterDisplay), 3);
+			counterMessage=counterMessage +hi + " Thousand Brownies";
 
 		}
 
 		else if (brownieNum >= 1000000) {
 			CounterDisplay = brownieNum;
 			CounterDisplay = CounterDisplay / 1000000;
-			counter.setText("" + CounterDisplay + " Million Brownies");
+			hi = shortString(Double.toString(CounterDisplay), 4);
+			counterMessage=counterMessage + hi + " Million Brownies";
 		}
+		counter.setText(counterMessage);
 	}
 }
