@@ -5,9 +5,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -83,20 +86,20 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
 		button.setBackground(Color.GRAY);
 		button.setBounds(buttonX, buttonY, (frameSegment + 1) - 40, 80);
 		this.add(button);
-		/*
-		 * JLabel label = new JLabel("da;hfo;UG;I"); label.setName(storeName);
-		 * label.setBounds(buttonX + 250, buttonY, 50, 80);
-		 * label.setOpaque(false); label.setVisible(true); this.add(label);
-		 */
+		
 	}
 
+	
+	
 	void brownieButton() {
+		URL u=getClass().getResource("chocolate_brownies.png");
+		Icon i=new ImageIcon(u);
 		brownie = new JButton();
 		brownie.addMouseListener(this);
 		brownie.setBorderPainted(false);
-		brownie.setOpaque(true);
-		brownie.setBackground(new Color(125, 89, 54));
-		brownie.setBounds(frameSegment - 125, 156, 250, 250);
+		brownie.setOpaque(false);
+		brownie.setIcon(i);
+		brownie.setBounds(frameSegment - 125, 156, i.getIconWidth(), i.getIconHeight());
 		this.add(brownie);
 
 	}

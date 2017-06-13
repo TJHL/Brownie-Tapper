@@ -4,7 +4,7 @@ import javax.swing.JLabel;
 
 public class BrownieManager {
 	int ClickMultiplier = 1;
-	double brownieNum = 998;
+	double brownieNum = 0;
 	double CounterDisplay = 0;
 	BrownieStore store;
 	BrownieStore store2;
@@ -24,13 +24,13 @@ public class BrownieManager {
 	BrownieManager() {
 		store = new BrownieStore("Baking Club", (float) .1, 10);
 		store2 = new BrownieStore("Desert Shop", 1, 100);
-		store3 = new BrownieStore("Store 3", 15, 1000);
-		store4 = new BrownieStore("Store 4", 50, 10000);
-		store5 = new BrownieStore("Store 5", 200, 1000000);
-		store6 = new BrownieStore("Store 6", 5000, 5000000);
-		store7 = new BrownieStore("Store 7", 10000, 25000000);
-		store8 = new BrownieStore("Store 8", 1000000, 500000000);
-		store9 = new BrownieStore("Universal Monopoly", 0, 2);// 922337203685477580);
+		store3 = new BrownieStore("Farm", 15, 1000);
+		store4 = new BrownieStore("Factory", 50, 10000);
+		store5 = new BrownieStore("Baking Cult", 200, 500000);
+		store6 = new BrownieStore("World Monopoly", 5000, 5000000);
+		store7 = new BrownieStore("Planet", 10000, 25000000);
+		store8 = new BrownieStore("Science Beam", 1000000, 500000000);
+		store9 = new BrownieStore("Universal Monopoly", 0,   2147483647);
 		brownieProduction.add(store);
 		brownieProduction.add(store2);
 		brownieProduction.add(store3);
@@ -51,16 +51,10 @@ public class BrownieManager {
 
 		setCounter(counter);
 
+		if(store9.producerAmount <1){
 		produce2();
-		devAddBrownies();
+		}
 
-	}
-
-	void devAutoPurchase() {
-	}
-
-	void devAddBrownies() {
-		// brownieNum = brownieNum + 1;
 	}
 
 	void brownieClick() {
@@ -157,6 +151,13 @@ public class BrownieManager {
 			CounterDisplay = CounterDisplay / 1000000;
 			hi = shortString(Double.toString(CounterDisplay), 4);
 			counterMessage=counterMessage + hi + " Million Brownies";
+		}
+		
+		else if (brownieNum >= 1000000000) {
+			CounterDisplay = brownieNum;
+			CounterDisplay = CounterDisplay / 1000000000;
+			hi = shortString(Double.toString(CounterDisplay), 4);
+			counterMessage=counterMessage + hi + " Trillion Brownies";
 		}
 		counter.setText(counterMessage);
 	}

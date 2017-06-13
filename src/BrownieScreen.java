@@ -1,20 +1,34 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 
 public class BrownieScreen {
 
 	BrownieStore store;
+	public static BufferedImage BlueImg;
+	public static BufferedImage StoreImg;
+	
 
 	void draw(Graphics g) {
-
+		
+		try {
+			BlueImg = ImageIO.read(this.getClass().getResourceAsStream("Blue Background.png"));	
+			StoreImg = ImageIO.read(this.getClass().getResourceAsStream("Shop Background.jpg"));
+		} catch (IOException e) {	
+			e.printStackTrace();
+		}
+		
+		
 		// background
-		g.setColor(Color.BLUE);
-		g.fillRect(0, 0, (BrownieTapperLauncher.WIDTH / 3) * 2, BrownieTapperLauncher.HEIGHT);
+		g.drawImage(this.BlueImg, 0, 0, BrownieTapperLauncher.WIDTH, BrownieTapperLauncher.HEIGHT, null);
+	
 
 		// storeShopBackground
-		g.setColor(new Color(125, 89, 54));
-		g.fillRect((BrownieTapperLauncher.WIDTH / 3) * 2, 0, BrownieTapperLauncher.WIDTH / 3 + 1,
-				BrownieTapperLauncher.HEIGHT);
+		g.drawImage(this.StoreImg, (BrownieTapperLauncher.WIDTH/3)*2, 0, BrownieTapperLauncher.WIDTH, BrownieTapperLauncher.HEIGHT, null);
+
 	}
 
 	void update() {
