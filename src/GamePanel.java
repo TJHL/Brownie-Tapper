@@ -36,7 +36,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
 
 	GamePanel() {
 
-		clock = new Timer(1000 / 60, (ActionListener) this);
+		clock = new Timer(1000 / 30, (ActionListener) this);
 		brwSrn = new BrownieScreen();
 		manager = new BrownieManager();
 		stores = manager.getStores();
@@ -86,14 +86,12 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
 		button.setBackground(Color.GRAY);
 		button.setBounds(buttonX, buttonY, (frameSegment + 1) - 40, 80);
 		this.add(button);
-		
+
 	}
 
-	
-	
 	void brownieButton() {
-		URL u=getClass().getResource("chocolate_brownies.png");
-		Icon i=new ImageIcon(u);
+		URL u = getClass().getResource("chocolate_brownies.png");
+		Icon i = new ImageIcon(u);
 		brownie = new JButton();
 		brownie.addMouseListener(this);
 		brownie.setBorderPainted(false);

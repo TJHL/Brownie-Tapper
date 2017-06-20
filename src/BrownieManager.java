@@ -4,7 +4,7 @@ import javax.swing.JLabel;
 
 public class BrownieManager {
 	int ClickMultiplier = 1;
-	double brownieNum = 0;
+	double brownieNum = 400;
 	double CounterDisplay = 0;
 	BrownieStore store;
 	BrownieStore store2;
@@ -19,6 +19,7 @@ public class BrownieManager {
 	float browniesPerSecond;
 	float browniesPerTick;
 
+	GamePanel panel;
 	ArrayList<BrownieStore> brownieProduction = new ArrayList<BrownieStore>();
 
 	BrownieManager() {
@@ -27,10 +28,10 @@ public class BrownieManager {
 		store3 = new BrownieStore("Farm", 15, 1000);
 		store4 = new BrownieStore("Factory", 50, 10000);
 		store5 = new BrownieStore("Baking Cult", 200, 500000);
-		store6 = new BrownieStore("World Monopoly", 5000, 5000000);
-		store7 = new BrownieStore("Planet", 10000, 25000000);
+		store6 = new BrownieStore("Planet", 5000, 5000000);
+		store7 = new BrownieStore("World Monopoly", 10000, 25000000);
 		store8 = new BrownieStore("Science Beam", 1000000, 500000000);
-		store9 = new BrownieStore("Universal Monopoly", 0,   2147483647);
+		store9 = new BrownieStore("Universal Monopoly", 0, 2147483647);
 		brownieProduction.add(store);
 		brownieProduction.add(store2);
 		brownieProduction.add(store3);
@@ -51,10 +52,16 @@ public class BrownieManager {
 
 		setCounter(counter);
 
-		if(store9.producerAmount <1){
-		produce2();
+		if (store9.producerAmount < 1) {
+			produce2();
 		}
 
+	}
+
+	void multiplyer(){
+	if(browniesPerSecond/10 = 1*10^x){
+		ClickMultiplier=ClickMultiplier*2;
+	}
 	}
 
 	void brownieClick() {
@@ -93,7 +100,7 @@ public class BrownieManager {
 				+ (store6.produceAmount * store6.producerAmount) + (store7.produceAmount * store7.producerAmount)
 				+ (store8.produceAmount * store8.producerAmount);
 
-		browniesPerTick = browniesPerSecond / 60;
+		browniesPerTick = browniesPerSecond / 15;
 
 		brownieNum = (float) brownieNum + browniesPerTick;
 
@@ -107,34 +114,32 @@ public class BrownieManager {
 	private String shortString(String longString, int deciPlace) {
 		String shortString = "";
 		int stop = longString.length();
-		int point=longString.indexOf('.');
+		int point = longString.indexOf('.');
 		for (int i = 0; i < stop; i++) {
-			if (point>=0 &&	i>point+deciPlace) {
+			if (point >= 0 && i > point + deciPlace) {
 				break;
 			}
 			shortString = shortString + longString.charAt(i);
-			}
+		}
 
-
-		
-		System.out.println(longString);
-		System.out.println(shortString);
+		// System.out.println(longString);
+		// System.out.println(shortString);
 		return shortString;
 	}
 
 	void setCounter(JLabel counter) {
 		CounterDisplay = brownieNum;
-		String counterMessage="";
+		String counterMessage = "";
 		String hi = shortString(Double.toString(CounterDisplay), 0);
 
 		if (brownieNum <= 999) {
 			if (brownieNum >= 2 || brownieNum == 0) {
 
-				counterMessage=counterMessage +hi + " Brownies";
+				counterMessage = counterMessage + hi + " Brownies";
 
 			} else if (brownieNum == 1) {
 
-				counterMessage=counterMessage +hi + " Brownie";
+				counterMessage = counterMessage + hi + " Brownie";
 			}
 		}
 
@@ -142,7 +147,7 @@ public class BrownieManager {
 
 			CounterDisplay = CounterDisplay / 1000;
 			hi = shortString(Double.toString(CounterDisplay), 3);
-			counterMessage=counterMessage +hi + " Thousand Brownies";
+			counterMessage = counterMessage + hi + " Thousand Brownies";
 
 		}
 
@@ -150,14 +155,14 @@ public class BrownieManager {
 			CounterDisplay = brownieNum;
 			CounterDisplay = CounterDisplay / 1000000;
 			hi = shortString(Double.toString(CounterDisplay), 4);
-			counterMessage=counterMessage + hi + " Million Brownies";
+			counterMessage = counterMessage + hi + " Million Brownies";
 		}
-		
+
 		else if (brownieNum >= 1000000000) {
 			CounterDisplay = brownieNum;
 			CounterDisplay = CounterDisplay / 1000000000;
 			hi = shortString(Double.toString(CounterDisplay), 4);
-			counterMessage=counterMessage + hi + " Trillion Brownies";
+			counterMessage = counterMessage + hi + " Trillion Brownies";
 		}
 		counter.setText(counterMessage);
 	}
