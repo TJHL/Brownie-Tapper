@@ -28,7 +28,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
 	int buttonX = (BrownieTapperLauncher.WIDTH / 3) * 2 + 20;
 	int buttonY = 20;
 	int frameSegment = BrownieTapperLauncher.WIDTH / 3;
-	Font shop = new Font("Arial", Font.PLAIN, 24);
+	Font shop = new Font("Arial", Font.PLAIN, 20);
 	Font score = new Font("Arial", Font.BOLD, 24);
 	Font bps = new Font("Arial", Font.BOLD, 12);
 
@@ -77,9 +77,20 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
 		JButton button = new JButton();
 		button.setFont(shop);
 		button.setHorizontalAlignment(SwingConstants.LEFT);
-
 		button.addMouseListener(this);
-		button.setText(storeName + " $" + store.producePrice);
+
+		if (store.producePrice >= 1000 && store.producePrice < 1000000) {
+			button.setText(storeName + " $" + (int) store.producePrice / 1000 + " Thousand");
+		}
+
+		else if (store.producePrice >= 1000000) {
+			button.setText(storeName + " $" + (int) store.producePrice / 1000000 + " Million");
+		}
+
+		else {
+			button.setText(storeName + " $" + (int) store.producePrice);// OOOOOOOOOOOOOOOOOOOOOOOOOO
+		}
+
 		button.setName(storeName);
 		button.setBorderPainted(false);
 		button.setOpaque(true);

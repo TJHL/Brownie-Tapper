@@ -4,7 +4,7 @@ import javax.swing.JLabel;
 
 public class BrownieManager {
 	int ClickMultiplier = 1;
-	double brownieNum = 400;
+	double brownieNum = 0;
 	double CounterDisplay = 0;
 	BrownieStore store;
 	BrownieStore store2;
@@ -56,12 +56,6 @@ public class BrownieManager {
 			produce2();
 		}
 
-	}
-
-	void multiplyer(){
-	if(browniesPerSecond/10 = 1*10^x){
-		ClickMultiplier=ClickMultiplier*2;
-	}
 	}
 
 	void brownieClick() {
@@ -156,6 +150,13 @@ public class BrownieManager {
 			CounterDisplay = CounterDisplay / 1000000;
 			hi = shortString(Double.toString(CounterDisplay), 4);
 			counterMessage = counterMessage + hi + " Million Brownies";
+		}
+
+		else if (brownieNum >= 1000000000) {
+			CounterDisplay = brownieNum;
+			CounterDisplay = CounterDisplay / 1000000000;
+			hi = shortString(Double.toString(CounterDisplay), 4);
+			counterMessage = counterMessage + hi + " Billion Brownies";
 		}
 
 		else if (brownieNum >= 1000000000) {

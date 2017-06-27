@@ -23,7 +23,7 @@ public class BrownieScreen {
 		g.drawImage(this.BlueImg, 0, 0, BrownieTapperLauncher.WIDTH + 500, BrownieTapperLauncher.HEIGHT + 20, null);
 
 		// storeShopBackground
-		g.drawImage(this.StoreImg, (BrownieTapperLauncher.WIDTH / 3) * 2, 0, BrownieTapperLauncher.WIDTH / 3,
+		g.drawImage(this.StoreImg, (BrownieTapperLauncher.WIDTH / 3) * 2, 0, (BrownieTapperLauncher.WIDTH / 3) + 1,
 				BrownieTapperLauncher.HEIGHT, null);
 
 	}
