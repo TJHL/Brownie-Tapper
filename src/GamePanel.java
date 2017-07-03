@@ -37,8 +37,8 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
 	GamePanel() {
 
 		clock = new Timer(1000 / 30, (ActionListener) this);
-		brwSrn = new BrownieScreen();
 		manager = new BrownieManager();
+		brwSrn = new BrownieScreen(manager);
 		stores = manager.getStores();
 		brownieProductionIterator = stores.iterator();
 		while (brownieProductionIterator.hasNext()) {
@@ -61,7 +61,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
 		BrownieTapperLauncher.frame.setVisible(true);
 
 		addMouseListener(this);
-		brwSrn.store = manager.store;
+
 		startGame();
 
 	}
@@ -93,8 +93,8 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
 
 		button.setName(storeName);
 		button.setBorderPainted(false);
-		button.setOpaque(true);
-		button.setBackground(Color.GRAY);
+		button.setOpaque(false);
+		//button.setBackground(Color.GRAY);
 		button.setBounds(buttonX, buttonY, (frameSegment + 1) - 40, 80);
 		this.add(button);
 

@@ -1,10 +1,11 @@
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import javax.swing.JLabel;
 
 public class BrownieManager {
 	int ClickMultiplier = 1;
-	double brownieNum = 0;
+	double brownieNum = 90;
 	double CounterDisplay = 0;
 	BrownieStore store;
 	BrownieStore store2;
@@ -102,7 +103,8 @@ public class BrownieManager {
 
 	void setProducingCounter(JLabel label) {
 		// String hi = shortString(Double.toString(browniesPerSecond), 2);
-		label.setText("Brownies Per Second " + browniesPerSecond);
+		DecimalFormat brownieFormat= new DecimalFormat(".0");
+		label.setText("Brownies Per Second " + brownieFormat.format(browniesPerSecond));
 	}
 
 	private String shortString(String longString, int deciPlace) {
@@ -148,14 +150,14 @@ public class BrownieManager {
 		else if (brownieNum >= 1000000) {
 			CounterDisplay = brownieNum;
 			CounterDisplay = CounterDisplay / 1000000;
-			hi = shortString(Double.toString(CounterDisplay), 4);
+			hi = shortString(Double.toString(CounterDisplay), 2);
 			counterMessage = counterMessage + hi + " Million Brownies";
 		}
 
 		else if (brownieNum >= 1000000000) {
 			CounterDisplay = brownieNum;
 			CounterDisplay = CounterDisplay / 1000000000;
-			hi = shortString(Double.toString(CounterDisplay), 4);
+			hi = shortString(Double.toString(CounterDisplay), 2);
 			counterMessage = counterMessage + hi + " Billion Brownies";
 		}
 
