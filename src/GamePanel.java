@@ -88,13 +88,12 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
 		}
 
 		else {
-			button.setText(storeName + " $" + (int) store.producePrice);// OOOOOOOOOOOOOOOOOOOOOOOOOO
+			button.setText(storeName + " $" + (int) store.producePrice);
 		}
 
 		button.setName(storeName);
 		button.setBorderPainted(false);
 		button.setOpaque(false);
-		//button.setBackground(Color.GRAY);
 		button.setBounds(buttonX, buttonY, (frameSegment + 1) - 40, 80);
 		this.add(button);
 
@@ -137,6 +136,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
 			}
 
 		}
+
 	}
 
 	public void mouseClicked(MouseEvent e) {

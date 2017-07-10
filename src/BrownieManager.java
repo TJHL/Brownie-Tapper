@@ -52,7 +52,9 @@ public class BrownieManager {
 	void update(JLabel counter) {
 
 		setCounter(counter);
-
+		if (brownieNum < 2147483647) {
+			produce2();
+		}
 		if (store9.producerAmount < 1) {
 			produce2();
 		}
@@ -102,8 +104,7 @@ public class BrownieManager {
 	}
 
 	void setProducingCounter(JLabel label) {
-		// String hi = shortString(Double.toString(browniesPerSecond), 2);
-		DecimalFormat brownieFormat= new DecimalFormat(".0");
+		DecimalFormat brownieFormat = new DecimalFormat(".0");
 		label.setText("Brownies Per Second " + brownieFormat.format(browniesPerSecond));
 	}
 
@@ -117,9 +118,6 @@ public class BrownieManager {
 			}
 			shortString = shortString + longString.charAt(i);
 		}
-
-		// System.out.println(longString);
-		// System.out.println(shortString);
 		return shortString;
 	}
 
@@ -142,7 +140,7 @@ public class BrownieManager {
 		else if (brownieNum >= 1000 && brownieNum <= 999999) {
 
 			CounterDisplay = CounterDisplay / 1000;
-			hi = shortString(Double.toString(CounterDisplay), 3);
+			hi = shortString(Double.toString(CounterDisplay), 2);
 			counterMessage = counterMessage + hi + " Thousand Brownies";
 
 		}
