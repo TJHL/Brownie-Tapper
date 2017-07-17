@@ -3,6 +3,8 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.net.URL;
@@ -17,7 +19,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.Timer;
 
-public class GamePanel extends JPanel implements ActionListener, MouseListener {
+public class GamePanel extends JPanel implements ActionListener, MouseListener, KeyListener {
 	Timer clock;
 	JLabel brownieCounter = new JLabel("0 Brownies");
 	JLabel productionCounter = new JLabel("Brownies Per Second:");
@@ -61,6 +63,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
 		BrownieTapperLauncher.frame.setVisible(true);
 
 		addMouseListener(this);
+		addKeyListener(this);
 
 		startGame();
 
@@ -139,6 +142,19 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
 
 	}
 
+	public void keyPressed(KeyEvent e) {
+		if (e.getKeyCode() == KeyEvent.VK_NUMPAD1) {
+			manager.extraBrownies1000();
+		}
+		if (e.getKeyCode() == KeyEvent.VK_NUMPAD2) {
+			manager.extraBrownies1000000();
+		}
+		if (e.getKeyCode() == KeyEvent.VK_NUMPAD3) {
+			manager.extraBrownies1000000000();
+		}
+
+	}
+
 	public void mouseClicked(MouseEvent e) {
 	}
 
@@ -150,4 +166,11 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener {
 
 	public void mouseExited(MouseEvent e) {
 	}
+
+	public void keyTyped(KeyEvent e) {
+	}
+
+	public void keyReleased(KeyEvent e) {
+	}
+
 }

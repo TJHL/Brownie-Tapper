@@ -5,7 +5,7 @@ import javax.swing.JLabel;
 
 public class BrownieManager {
 	int ClickMultiplier = 1;
-	double brownieNum = 90;
+	double brownieNum = 2147483645;
 	double CounterDisplay = 0;
 	BrownieStore store;
 	BrownieStore store2;
@@ -52,7 +52,7 @@ public class BrownieManager {
 	void update(JLabel counter) {
 
 		setCounter(counter);
-		if (brownieNum < 2147483647) {
+		if (brownieNum < 2147483645) {
 			produce2();
 		}
 		if (store9.producerAmount < 1) {
@@ -65,6 +65,19 @@ public class BrownieManager {
 
 		brownieNum = brownieNum + (1 * ClickMultiplier);
 
+	}
+
+	void extraBrownies1000() {
+		brownieNum = brownieNum + 1000;
+		System.out.println(brownieNum);
+	}
+
+	void extraBrownies1000000() {
+		brownieNum = brownieNum + 1000000;
+	}
+
+	void extraBrownies1000000000() {
+		brownieNum = brownieNum + 1000000000;
 	}
 
 	public BrownieStore getStore(String storeName) {
