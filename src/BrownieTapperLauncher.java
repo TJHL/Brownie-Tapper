@@ -13,7 +13,6 @@ public class BrownieTapperLauncher {
 	}
 		
 		BrownieTapperLauncher(){
-			
 			frame = new JFrame();
 			setup();
 			panel = new GamePanel();
