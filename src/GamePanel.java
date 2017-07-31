@@ -33,8 +33,10 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
 	Font shop = new Font("Arial", Font.PLAIN, 20);
 	Font score = new Font("Arial", Font.BOLD, 24);
 	Font bps = new Font("Arial", Font.BOLD, 12);
-
+	JButton button;
 	JButton brownie;
+	String storeName;
+	BrownieStore store;
 
 	GamePanel() {
 
@@ -43,10 +45,8 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
 		brwSrn = new BrownieScreen(manager);
 		stores = manager.getStores();
 		brownieProductionIterator = stores.iterator();
-		while (brownieProductionIterator.hasNext()) {
-			addStoreButton(buttonX, buttonY);
-			buttonY += 100;
-		}
+		iterateButtons();
+
 		brownieButton();
 		brownieCounter.setFont(score);
 		brownieCounter.setForeground(Color.WHITE);
@@ -74,10 +74,17 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
 
 	}
 
+	void iterateButtons() {
+		while (brownieProductionIterator.hasNext()) {
+			addStoreButton(buttonX, buttonY);
+			buttonY += 100;
+		}
+	}
+
 	void addStoreButton(int buttonX, int buttonY) {
-		BrownieStore store = brownieProductionIterator.next();
-		String storeName = store.name;
-		JButton button = new JButton();
+		store = brownieProductionIterator.next();
+		storeName = store.name;
+		button = new JButton();
 		button.setFont(shop);
 		button.setHorizontalAlignment(SwingConstants.LEFT);
 		button.addMouseListener(this);
@@ -125,12 +132,11 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
 		repaint();
 
 	}
-	
+
 	public void mouseReleased(MouseEvent e) {
 		if (e.getButton() == MouseEvent.BUTTON1) {
 			if (e.getSource() == brownie) {
 				manager.brownieClick();
-				
 
 			}
 
