@@ -8,6 +8,7 @@ public class BrownieManager {
 	double brownieNum = 0;
 	double CounterDisplay = 0;
 	int browniesPerClick = 1;
+	double priceMultiplier = 1 ; //Original Num(1.35)Atention Getting Line Atention Getting Line Atention Getting Line Atention Getting Line Atention Getting Line Atention Getting Line 
 	BrownieStore store;
 	BrownieStore store2;
 	BrownieStore store3;
@@ -108,7 +109,7 @@ public class BrownieManager {
 			if (brownieNum >= store.producePrice) {
 				store.producerAmount = store.producerAmount + 1;
 				brownieNum = brownieNum - store.producePrice;
-				store.producePrice = store.producePrice * 1.35;
+				store.producePrice = store.producePrice * priceMultiplier;
 				// panel.updateButtons();
 			}
 		}

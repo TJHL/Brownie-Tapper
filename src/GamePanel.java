@@ -63,7 +63,6 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
 		BrownieTapperLauncher.frame.setVisible(true);
 
 		addMouseListener(this);
-		addKeyListener(this);
 
 		startGame();
 
@@ -142,7 +141,7 @@ public class GamePanel extends JPanel implements ActionListener, MouseListener, 
 
 			else {
 				manager.storePurchace(e.getComponent().getName());
-
+				
 			}
 
 		}
